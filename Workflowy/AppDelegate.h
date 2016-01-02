@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+FOUNDATION_EXPORT NSString *const kPreferenceGlobalShortcut;
 
+@interface AppDelegate : NSObject <NSApplicationDelegate, WebUIDelegate, WebPolicyDelegate>
 
 @end
 
