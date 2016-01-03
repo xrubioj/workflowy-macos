@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 
 FOUNDATION_EXPORT NSString *const kPreferenceGlobalShortcut;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, WebUIDelegate, WebPolicyDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+
+- (void)setMainWindow:(NSWindowController *)windowController;
+- (void)removeMainWindow;
 
 @end
 
