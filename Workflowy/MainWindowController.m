@@ -9,15 +9,26 @@
 #import "MainWindowController.h"
 #import "AppDelegate.h"
 
-NSString *const kURL = @"https://workflowy.com/";
+static NSString *const kURL = @"https://workflowy.com/";
+
+// Hack hack hack
+static NSURL *lastURL;
 
 @interface MainWindowController ()
 
 @property (weak) IBOutlet WebView *webView;
 
+@property (strong) NSURL *baseURL;
+
 @end
 
 @implementation MainWindowController
+
+- (id)initWithURL:(NSURL *)url {
+    
+    self.baseURL = url;
+    return [super initWithWindowNibName:@"MainMenu"];
+}
 
 - (void)awakeFromNib {
     AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
@@ -27,10 +38,12 @@ NSString *const kURL = @"https://workflowy.com/";
     [self initWebView];
 }
 
+/*
 - (void)windowWillClose:(NSNotification *)notification {
     AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
     [appDelegate removeMainWindow];
 }
+*/
 
 - (void)initWebView {
     
@@ -43,8 +56,15 @@ NSString *const kURL = @"https://workflowy.com/";
     [self.webView setUIDelegate:self];
     [self.webView setPolicyDelegate:self];
     
-    NSURL *url = [NSURL URLWithString:kURL];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    if (!self.baseURL && !lastURL) {
+        self.baseURL = [NSURL URLWithString:kURL];
+        NSLog(@"Opening MainWindow with default URL %@", self.baseURL);
+    } else {
+        if (!self.baseURL)
+            self.baseURL = lastURL;
+        NSLog(@"Opening MainWindow with URL %@", self.baseURL);
+    }
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.baseURL];
     [self.webView.mainFrame loadRequest:urlRequest];
 }
 
@@ -68,19 +88,22 @@ NSString *const kURL = @"https://workflowy.com/";
     if ([sender isEqual:self.webView]) {
         [listener use];
     } else {
-        [[NSWorkspace sharedWorkspace] openURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
+        //[[NSWorkspace sharedWorkspace] openURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
+        [self conditionallyOpenURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
         [listener ignore];
     }
 }
 
 - (void)webView:(WebView *)sender decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id<WebPolicyDecisionListener>)listener {
     
-    [[NSWorkspace sharedWorkspace] openURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
+    //[[NSWorkspace sharedWorkspace] openURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
+    [self conditionallyOpenURL:[actionInformation objectForKey:WebActionOriginalURLKey]];
     [listener ignore];
 }
 
 - (WebView *)webView:(WebView *)sender createWebViewModalDialogWithRequest:(NSURLRequest *)request {
-    [[NSWorkspace sharedWorkspace] openURL:[request URL]];
+    //[[NSWorkspace sharedWorkspace] openURL:[request URL]];
+    [self conditionallyOpenURL:[request URL]];
     return nil;
 }
 
@@ -97,6 +120,25 @@ NSString *const kURL = @"https://workflowy.com/";
     [newWebView setUIDelegate:self];
     [newWebView setPolicyDelegate:self];
     return newWebView;
+}
+
+- (BOOL)conditionallyOpenURL:(NSURL *)url {
+    
+    if ([url.host isEqualToString:self.baseURL.host] &&
+        [url.scheme isEqualToString:self.baseURL.scheme]) {
+        
+        // Internal URL: open in another window
+        lastURL = url;
+        MainWindowController *window = [[MainWindowController alloc] initWithURL:url];
+        [window showWindow:self];
+        return TRUE;
+    } else {
+        
+        // External URL: open in another application
+        [[NSWorkspace sharedWorkspace] openURL:url];
+        return FALSE;
+        
+    }
 }
 
 @end
