@@ -7,13 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A964160E1C35B62C002C0656 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A964160C1C35B62C002C0656 /* Preferences.xib */; };
+		A96416121C35BA3F002C0656 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96416101C35BA3F002C0656 /* PreferencesWindowController.m */; };
+		A96C7ECE1C399C6D0017D7F1 /* RegisterAsLoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */; };
+		A98392691C38574800275CBB /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98392681C38574800275CBB /* MainWindowController.m */; };
 		A9BB94AD1BFBC44D00055469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB94AC1BFBC44D00055469 /* AppDelegate.m */; };
 		A9BB94B01BFBC44D00055469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB94AF1BFBC44D00055469 /* main.m */; };
 		A9BB94B21BFBC44D00055469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BB94B11BFBC44D00055469 /* Assets.xcassets */; };
 		A9BB94B51BFBC44D00055469 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BB94B31BFBC44D00055469 /* MainMenu.xib */; };
+		A9BB94BD1BFBC6C800055469 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9BB94BC1BFBC6C800055469 /* WebKit.framework */; };
+		C726A74FDF001D306895999B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDBE7F8673BB5D266E6C6D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29DB5F931385CEEF801DA53A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7DDBE7F8673BB5D266E6C6D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94303DB1C4850F4001B0F1E /* Workflowy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Workflowy.entitlements; sourceTree = "<group>"; };
+		A964160D1C35B62C002C0656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
+		A964160F1C35BA3F002C0656 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		A96416101C35BA3F002C0656 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterAsLoginHelper.m; sourceTree = "<group>"; };
+		A96C7ECF1C39A78B0017D7F1 /* RegisterAsLoginHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterAsLoginHelper.h; sourceTree = "<group>"; };
+		A98392671C38574800275CBB /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		A98392681C38574800275CBB /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		A9BB94A81BFBC44D00055469 /* Workflowy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workflowy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BB94AB1BFBC44D00055469 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9BB94AC1BFBC44D00055469 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -21,6 +37,8 @@
 		A9BB94B11BFBC44D00055469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9BB94B41BFBC44D00055469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A9BB94B61BFBC44D00055469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BB94BC1BFBC6C800055469 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		DEE9D83C7A7FEB0D52D26CFC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +46,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BB94BD1BFBC6C800055469 /* WebKit.framework in Frameworks */,
+				C726A74FDF001D306895999B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DBD5961E8675CCE237EEBDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DDBE7F8673BB5D266E6C6D9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A9BB949F1BFBC44D00055469 = {
 			isa = PBXGroup;
 			children = (
+				A9BB94BC1BFBC6C800055469 /* WebKit.framework */,
 				A9BB94AA1BFBC44D00055469 /* Workflowy */,
 				A9BB94A91BFBC44D00055469 /* Products */,
+				D3A39E7DFEC2BBF1A2DAC70C /* Pods */,
+				5DBD5961E8675CCE237EEBDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,12 +84,20 @@
 		A9BB94AA1BFBC44D00055469 /* Workflowy */ = {
 			isa = PBXGroup;
 			children = (
+				A94303DB1C4850F4001B0F1E /* Workflowy.entitlements */,
 				A9BB94AB1BFBC44D00055469 /* AppDelegate.h */,
 				A9BB94AC1BFBC44D00055469 /* AppDelegate.m */,
 				A9BB94B11BFBC44D00055469 /* Assets.xcassets */,
-				A9BB94B31BFBC44D00055469 /* MainMenu.xib */,
 				A9BB94B61BFBC44D00055469 /* Info.plist */,
 				A9BB94AE1BFBC44D00055469 /* Supporting Files */,
+				A964160F1C35BA3F002C0656 /* PreferencesWindowController.h */,
+				A96416101C35BA3F002C0656 /* PreferencesWindowController.m */,
+				A964160C1C35B62C002C0656 /* Preferences.xib */,
+				A98392671C38574800275CBB /* MainWindowController.h */,
+				A98392681C38574800275CBB /* MainWindowController.m */,
+				A9BB94B31BFBC44D00055469 /* MainMenu.xib */,
+				A96C7ECF1C39A78B0017D7F1 /* RegisterAsLoginHelper.h */,
+				A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */,
 			);
 			path = Workflowy;
 			sourceTree = "<group>";
@@ -71,6 +110,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D3A39E7DFEC2BBF1A2DAC70C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEE9D83C7A7FEB0D52D26CFC /* Pods.debug.xcconfig */,
+				29DB5F931385CEEF801DA53A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9BB94B91BFBC44D00055469 /* Build configuration list for PBXNativeTarget "Workflowy" */;
 			buildPhases = (
+				79806552E57166E702E5038E /* Check Pods Manifest.lock */,
 				A9BB94A41BFBC44D00055469 /* Sources */,
 				A9BB94A51BFBC44D00055469 /* Frameworks */,
 				A9BB94A61BFBC44D00055469 /* Resources */,
+				2F3005FD34B2BE29C8F1A462 /* Embed Pods Frameworks */,
+				3353152409221A43BCCD1200 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -102,6 +153,12 @@
 				TargetAttributes = {
 					A9BB94A71BFBC44D00055469 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = R5Q772C6P8;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -129,11 +186,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BB94B21BFBC44D00055469 /* Assets.xcassets in Resources */,
+				A964160E1C35B62C002C0656 /* Preferences.xib in Resources */,
 				A9BB94B51BFBC44D00055469 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F3005FD34B2BE29C8F1A462 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3353152409221A43BCCD1200 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79806552E57166E702E5038E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9BB94A41BFBC44D00055469 /* Sources */ = {
@@ -141,6 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BB94B01BFBC44D00055469 /* main.m in Sources */,
+				A96416121C35BA3F002C0656 /* PreferencesWindowController.m in Sources */,
+				A96C7ECE1C399C6D0017D7F1 /* RegisterAsLoginHelper.m in Sources */,
+				A98392691C38574800275CBB /* MainWindowController.m in Sources */,
 				A9BB94AD1BFBC44D00055469 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +257,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A964160C1C35B62C002C0656 /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A964160D1C35B62C002C0656 /* Base */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
 		A9BB94B31BFBC44D00055469 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -240,11 +357,15 @@
 		};
 		A9BB94BA1BFBC44D00055469 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE9D83C7A7FEB0D52D26CFC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Workflowy/Workflowy.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Workflowy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsezy.Workflowy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -252,11 +373,15 @@
 		};
 		A9BB94BB1BFBC44D00055469 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29DB5F931385CEEF801DA53A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Workflowy/Workflowy.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Workflowy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsezy.Workflowy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -281,6 +406,7 @@
 				A9BB94BB1BFBC44D00055469 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
