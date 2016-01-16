@@ -36,6 +36,16 @@ static NSURL *lastURL;
 
     [super awakeFromNib];
     [self initWebView];
+    
+    // TODO: find a good solution for this
+    /*
+    if ([appDelegate isYosemite]) {
+        self.window.titleVisibility = NSWindowTitleHidden; // NSWindowTitleVisibility.Hidden;
+        self.window.titlebarAppearsTransparent = YES;
+        self.window.styleMask |= NSFullSizeContentViewWindowMask;
+        self.window.movableByWindowBackground = YES;
+    }
+    */
 }
 
 /*

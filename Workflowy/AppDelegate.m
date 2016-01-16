@@ -62,6 +62,8 @@ NSString *const kFirstRun = @"FirstRun";
     if ([self isFirstRun]) {
         [self performSelector:@selector(openPreferences:) withObject:nil afterDelay:1.0];
     }
+    
+    [self isYosemite];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -148,6 +150,26 @@ NSString *const kFirstRun = @"FirstRun";
         self.mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainMenu"];
     }
     [self.mainWindowController showWindow:self];
+}
+
+// ------------------------------------------------------------------------------------------------------
+
+- (BOOL)isYosemite {
+    
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    if (![processInfo respondsToSelector:@selector(operatingSystemVersion)])
+        return FALSE;
+    
+    NSOperatingSystemVersion version = [processInfo operatingSystemVersion];
+
+    /*
+    NSString* major = [NSString stringWithFormat:@"%ld", (long)version.majorVersion];
+    NSString* minor = [NSString stringWithFormat:@"%ld", (long)version.minorVersion];
+    NSString* patch = [NSString stringWithFormat:@"%ld", (long)version.patchVersion];
+    NSLog(@"%@.%@.%@", major, minor, patch);
+    */
+    
+    return version.majorVersion > 10 || (version.majorVersion == 10 && version.minorVersion >= 10);
 }
 
 @end

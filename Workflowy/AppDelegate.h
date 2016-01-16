@@ -15,5 +15,7 @@ FOUNDATION_EXPORT NSString *const kPreferenceGlobalShortcut;
 - (void)setMainWindow:(NSWindowController *)windowController;
 - (void)removeMainWindow;
 
+- (BOOL)isYosemite;
+
 @end
 
