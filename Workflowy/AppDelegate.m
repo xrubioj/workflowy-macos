@@ -7,9 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MainWindowController.h"
-#import "PreferencesWindowController.h"
 #import <MASShortcut/Shortcut.h>
+#import "WindowReferenceHolder.h"
 
 NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
 NSString *const kFirstRun = @"FirstRun";
@@ -19,7 +18,6 @@ NSString *const kFirstRun = @"FirstRun";
 @property (strong) NSStatusItem *statusItem;
 @property (assign, nonatomic) BOOL darkModeOn;
 
-@property (strong) MainWindowController *mainWindowController;
 @property (strong) PreferencesWindowController *preferencesWindowController;
 
 @end
@@ -38,6 +36,8 @@ NSString *const kFirstRun = @"FirstRun";
      [[NSUserDefaults standardUserDefaults] synchronize];
      */
     
+    NSLog(@"App Delegate: %@", self);
+        
     [self initStatusItem];
     
     // Global shortcut libraries:
@@ -54,7 +54,7 @@ NSString *const kFirstRun = @"FirstRun";
     */
     
     [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:kPreferenceGlobalShortcut toAction:^{
-         [self openWorkflowy];
+         [self activateAndOpenWorkflowy];
      }];
 
     // Open preferences on first run, with a delay to allow the main window to be shown prior to
@@ -70,9 +70,7 @@ NSString *const kFirstRun = @"FirstRun";
 }
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification {
-    if (self.mainWindowController) {
-        [self openWorkflowy];
-    }
+    [self openWorkflowy];
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -89,19 +87,6 @@ NSString *const kFirstRun = @"FirstRun";
 
 // ------------------------------------------------------------------------------------------------------
 
-- (void)setMainWindow:(NSWindowController *)windowController {
-    self.mainWindowController = (MainWindowController *)windowController;
-}
-
-- (void)removeMainWindow {
-    // NOTE: this is currently not used. Close event never gets called, which is ok,
-    //  because currently when we close the window we really do not destroy it, and
-    //  we can show it again
-    self.mainWindowController = nil;
-}
-
-// ------------------------------------------------------------------------------------------------------
-
 - (void)initStatusItem {
     
     // http://www.mactech.com/articles/mactech/Vol.22/22.02/Menulet/index.html
@@ -112,7 +97,7 @@ NSString *const kFirstRun = @"FirstRun";
     [self.statusItem setEnabled:YES];
     [self.statusItem setToolTip:@"Workflowy"];
     
-    [self.statusItem setAction:@selector(openWorkflowy:)];
+    [self.statusItem setAction:@selector(activateAndOpenWorkflowy:)];
     [self.statusItem setTarget:self];
     
     // Not used: http://stackoverflow.com/questions/25379525/how-to-detect-dark-mode-in-yosemite-to-change-the-status-bar-menu-icon/26472651#26472651
@@ -138,18 +123,28 @@ NSString *const kFirstRun = @"FirstRun";
     [self.preferencesWindowController showWindow:self];
 }
 
+-(IBAction)activateAndOpenWorkflowy:(id)sender {
+    [self activateAndOpenWorkflowy];
+}
+
+- (void)activateAndOpenWorkflowy {
+    NSRunningApplication *workflowyApp = [NSRunningApplication currentApplication];
+    [workflowyApp activateWithOptions:NSApplicationActivateAllWindows|NSApplicationActivateIgnoringOtherApps];
+    [self openWorkflowy];
+}
+
 - (IBAction)openWorkflowy:(id)sender {
     [self openWorkflowy];
 }
 
 - (void)openWorkflowy {
-    NSRunningApplication *workflowyApp = [NSRunningApplication currentApplication];
-    [workflowyApp activateWithOptions:NSApplicationActivateAllWindows|NSApplicationActivateIgnoringOtherApps];
-
-    if (!self.mainWindowController) {
-        self.mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainMenu"];
+    UInt openWindows = [self getOpenWindowsCount];
+    NSLog(@"Open Windows: %u", openWindows);
+    if (openWindows == 0) {
+        MainWindowController *mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainMenu"];
+        [mainWindowController showWindow:self];
+        [[WindowReferenceHolder sharedManager] addMainWindowController:mainWindowController];
     }
-    [self.mainWindowController showWindow:self];
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -170,6 +165,22 @@ NSString *const kFirstRun = @"FirstRun";
     */
     
     return version.majorVersion > 10 || (version.majorVersion == 10 && version.minorVersion >= 10);
+}
+
+- (UInt)getOpenWindowsCount {
+    NSArray<NSWindow *> *windows = [NSApp windows];
+    UInt count = 0;
+    for (NSWindow *window in windows) {
+        NSLog(@"Window: %@ (%@), windowController: %@, canBecomeMainWindow: %@, canBecomeKeyWindow: %@",
+              window, window.title, window.windowController,
+              [window canBecomeMainWindow] ? @"YES" : @"NO",
+              [window canBecomeKeyWindow] ? @"YES" : @"NO");
+        if ([window canBecomeMainWindow] && [window canBecomeKeyWindow] &&
+            window.windowController && [window.windowController isKindOfClass: [MainWindowController class]])
+            count++;
+    }
+    //return (UInt)[windows count];
+    return count;
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90474001C4A6631004DA5BF /* WindowReferenceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A90473FF1C4A6631004DA5BF /* WindowReferenceHolder.m */; };
 		A964160E1C35B62C002C0656 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A964160C1C35B62C002C0656 /* Preferences.xib */; };
 		A96416121C35BA3F002C0656 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96416101C35BA3F002C0656 /* PreferencesWindowController.m */; };
 		A96C7ECE1C399C6D0017D7F1 /* RegisterAsLoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */; };
@@ -22,6 +23,8 @@
 /* Begin PBXFileReference section */
 		29DB5F931385CEEF801DA53A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7DDBE7F8673BB5D266E6C6D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90473FF1C4A6631004DA5BF /* WindowReferenceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowReferenceHolder.m; sourceTree = "<group>"; };
+		A90474011C4A6645004DA5BF /* WindowReferenceHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowReferenceHolder.h; sourceTree = "<group>"; };
 		A94303DB1C4850F4001B0F1E /* Workflowy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Workflowy.entitlements; sourceTree = "<group>"; };
 		A964160D1C35B62C002C0656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		A964160F1C35BA3F002C0656 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
@@ -62,12 +65,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A90473FD1C4A65D0004DA5BF /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				A964160F1C35BA3F002C0656 /* PreferencesWindowController.h */,
+				A96416101C35BA3F002C0656 /* PreferencesWindowController.m */,
+				A964160C1C35B62C002C0656 /* Preferences.xib */,
+				A98392671C38574800275CBB /* MainWindowController.h */,
+				A98392681C38574800275CBB /* MainWindowController.m */,
+				A9BB94B31BFBC44D00055469 /* MainMenu.xib */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
+		A90473FE1C4A65E7004DA5BF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A96C7ECF1C39A78B0017D7F1 /* RegisterAsLoginHelper.h */,
+				A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */,
+				A90474011C4A6645004DA5BF /* WindowReferenceHolder.h */,
+				A90473FF1C4A6631004DA5BF /* WindowReferenceHolder.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		A9BB949F1BFBC44D00055469 = {
 			isa = PBXGroup;
 			children = (
 				A9BB94BC1BFBC6C800055469 /* WebKit.framework */,
 				A9BB94AA1BFBC44D00055469 /* Workflowy */,
-				A9BB94A91BFBC44D00055469 /* Products */,
 				D3A39E7DFEC2BBF1A2DAC70C /* Pods */,
 				5DBD5961E8675CCE237EEBDC /* Frameworks */,
 			);
@@ -79,25 +105,21 @@
 				A9BB94A81BFBC44D00055469 /* Workflowy.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A9BB94AA1BFBC44D00055469 /* Workflowy */ = {
 			isa = PBXGroup;
 			children = (
+				A9BB94A91BFBC44D00055469 /* Products */,
 				A94303DB1C4850F4001B0F1E /* Workflowy.entitlements */,
 				A9BB94AB1BFBC44D00055469 /* AppDelegate.h */,
 				A9BB94AC1BFBC44D00055469 /* AppDelegate.m */,
 				A9BB94B11BFBC44D00055469 /* Assets.xcassets */,
 				A9BB94B61BFBC44D00055469 /* Info.plist */,
 				A9BB94AE1BFBC44D00055469 /* Supporting Files */,
-				A964160F1C35BA3F002C0656 /* PreferencesWindowController.h */,
-				A96416101C35BA3F002C0656 /* PreferencesWindowController.m */,
-				A964160C1C35B62C002C0656 /* Preferences.xib */,
-				A98392671C38574800275CBB /* MainWindowController.h */,
-				A98392681C38574800275CBB /* MainWindowController.m */,
-				A9BB94B31BFBC44D00055469 /* MainMenu.xib */,
-				A96C7ECF1C39A78B0017D7F1 /* RegisterAsLoginHelper.h */,
-				A96C7ECD1C399C6D0017D7F1 /* RegisterAsLoginHelper.m */,
+				A90473FD1C4A65D0004DA5BF /* Windows */,
+				A90473FE1C4A65E7004DA5BF /* Helpers */,
 			);
 			path = Workflowy;
 			sourceTree = "<group>";
@@ -249,6 +271,7 @@
 				A9BB94B01BFBC44D00055469 /* main.m in Sources */,
 				A96416121C35BA3F002C0656 /* PreferencesWindowController.m in Sources */,
 				A96C7ECE1C399C6D0017D7F1 /* RegisterAsLoginHelper.m in Sources */,
+				A90474001C4A6631004DA5BF /* WindowReferenceHolder.m in Sources */,
 				A98392691C38574800275CBB /* MainWindowController.m in Sources */,
 				A9BB94AD1BFBC44D00055469 /* AppDelegate.m in Sources */,
 			);

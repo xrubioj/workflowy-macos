@@ -7,7 +7,8 @@
 //
 
 #import "MainWindowController.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
+#import "WindowReferenceHolder.h"
 
 static NSString *const kURL = @"https://workflowy.com/";
 
@@ -31,8 +32,6 @@ static NSURL *lastURL;
 }
 
 - (void)awakeFromNib {
-    AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
-    [appDelegate setMainWindow:self];
 
     [super awakeFromNib];
     [self initWebView];
@@ -48,12 +47,20 @@ static NSURL *lastURL;
     */
 }
 
-/*
-- (void)windowWillClose:(NSNotification *)notification {
-    AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
-    [appDelegate removeMainWindow];
+- (void)windowDidLoad {
+    // Important: without this the delegate is not properly set for the first window (the one opened when starting the application)
+    // and windowWillClose: will not get called
+    [[self window] setDelegate:self];
 }
-*/
+
+- (void)windowWillClose:(NSNotification *)notification {
+    // Ensure windows get closed
+    [[self window] setReleasedWhenClosed:YES];
+    [[self window] close];
+    [self close];
+
+    [[WindowReferenceHolder sharedManager] removeMainWindowController:self];
+}
 
 - (void)initWebView {
     
@@ -139,9 +146,13 @@ static NSURL *lastURL;
         
         // Internal URL: open in another window
         lastURL = url;
-        MainWindowController *window = [[MainWindowController alloc] initWithURL:url];
-        [window showWindow:self];
+        MainWindowController *mainWindowController = [[MainWindowController alloc] initWithURL:url];
+        [mainWindowController showWindow:self];
+
+        [[WindowReferenceHolder sharedManager] addMainWindowController:mainWindowController];
+        
         return TRUE;
+        
     } else {
         
         // External URL: open in another application

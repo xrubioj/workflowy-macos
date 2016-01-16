@@ -7,13 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
+#import "PreferencesWindowController.h"
 
 FOUNDATION_EXPORT NSString *const kPreferenceGlobalShortcut;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
-- (void)setMainWindow:(NSWindowController *)windowController;
-- (void)removeMainWindow;
 
 - (BOOL)isYosemite;
 
